@@ -1,17 +1,20 @@
 export const techIcons: Record<string, string> = {
-  twilio: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twilio.svg',
-  zapier: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/zapier.svg',
-  systeme: 'https://placehold.co/48x48/141829/00d4ff?text=S',
-  n8n: 'https://n8n.io/favicon.ico',
-  dotnet: 'https://skillicons.dev/icons?i=dotnet&theme=dark',
-  nodejs: 'https://skillicons.dev/icons?i=nodejs&theme=dark',
-  react: 'https://skillicons.dev/icons?i=react&theme=dark',
-  sql: 'https://skillicons.dev/icons?i=mysql&theme=dark',
-  python: 'https://skillicons.dev/icons?i=python&theme=dark',
-  opencv: 'https://placehold.co/48x48/141829/00d4ff?text=CV',
-  iot: 'https://placehold.co/48x48/141829/00d4ff?text=IoT',
-  webhook: 'https://placehold.co/48x48/141829/00d4ff?text=WH',
-  restapi: 'https://placehold.co/48x48/141829/00d4ff?text=API',
+  // Placeholders — white bg, dark text
+  twilio: 'https://placehold.co/48x48/FFFFFF/F22F46?text=Twilio',
+  webhook:  'https://placehold.co/48x48/FFFFFF/1a1a2e?text=WH',
+  iot:      'https://placehold.co/48x48/FFFFFF/1a1a2e?text=IoT',
+  restapi:  'https://placehold.co/48x48/FFFFFF/1a1a2e?text=API',
+  systeme: 'https://placehold.co/48x48/00d4ff/1a1a2e?text=S',
+  // The rest of your working icons
+  zapier:   'https://cdn.simpleicons.org/zapier',
+  n8n:      'https://cdn.simpleicons.org/n8n',
+  opencv:   'https://cdn.simpleicons.org/opencv',
+  dotnet:   'https://skillicons.dev/icons?i=dotnet&theme=light',
+  nodejs:   'https://skillicons.dev/icons?i=nodejs&theme=light',
+  react:    'https://skillicons.dev/icons?i=react&theme=light',
+  sql:      'https://skillicons.dev/icons?i=mysql&theme=light',
+  python:   'https://skillicons.dev/icons?i=python&theme=light',
+  
 };
 
 export const projectImages = {

@@ -13,9 +13,9 @@ const HeroScene = dynamic(() => import('./3D/HeroScene').then((mod) => mod.HeroS
 })
 
 const headlines = [
-  'We Build Software That Scales.',
-  'Automation That Saves Time.',
-  'AI Solutions That Deliver.',
+  ['We Build', 'Software That', 'Scales.'],
+  ['Automation', 'That Saves', 'Time.'],
+  ['AI Solutions', 'That', 'Deliver.'],
 ];
 
 export function Hero() {
@@ -40,20 +40,24 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-center px-4 text-center">
-        <div className="relative h-32 md:h-40 lg:h-48 mb-6">
-          {headlines.map((headline, index) => (
-            <motion.h1
-              key={headline}
+        <div className="relative h-48 md:h-56 lg:h-64 mb-10 z-20">
+          {headlines.map((headlineLines, index) => (
+            <motion.div
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ 
                 opacity: index === headlineIndex ? 1 : 0,
                 y: index === headlineIndex ? 0 : 30 
               }}
               transition={{ duration: 0.8 }}
-              className="absolute inset-0 text-4xl font-bold md:text-6xl lg:text-7xl"
+              className="absolute inset-0 flex flex-col items-center justify-center"
             >
-              <span className="text-gradient">{headline}</span>
-            </motion.h1>
+              <h1 className="text-4xl font-bold md:text-6xl lg:text-7xl">
+                <span className="text-gradient block">{headlineLines[0]}</span>
+                <span className="text-gradient block">{headlineLines[1]}</span>
+                <span className="text-gradient block">{headlineLines[2]}</span>
+              </h1>
+            </motion.div>
           ))}
         </div>
 
@@ -61,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-10 max-w-2xl text-lg text-text-secondary md:text-xl"
+          className="mb-10 max-w-2xl text-lg text-text-secondary md:text-xl z-20 relative"
         >
           Enterprise-grade software development, automation, AI & security
           solutions for businesses ready to scale.
