@@ -124,16 +124,15 @@ export function Solutions() {
                 ))}
               </div>
 
-              <a
-                href={solution.relatedCaseStudy}
-                className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary"
-                onClick={(e) => {
-                  e.preventDefault();
+              <button
+                className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-card"
+                onClick={() => {
                   scrollToSection(solution.relatedCaseStudy);
                 }}
+                aria-label={`View examples for ${solution.title}`}
               >
                 View Examples <FiArrowRight />
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
