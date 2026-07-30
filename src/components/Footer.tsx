@@ -23,11 +23,10 @@ export function Footer() {
   ];
 
   const servicesLinks = [
-    { label: 'Custom Web Applications', href: '#solutions' },
-    { label: 'Twilio Integrations', href: '#smsAutomation' },
-    { label: 'Automation & Integrations', href: '#workflowAutomation' },
-    { label: 'AI Agents & Intelligent Systems', href: '#faceRecognition' },
-    { label: 'Systeme.io & Funnel Automation', href: '#solutions' },
+    { label: 'Communication Automation', href: '#smsAutomation' },
+    { label: 'Workflow & Integration Automation', href: '#workflowAutomation' },
+    { label: 'Custom Software Development', href: '#instituteManagement' },
+    { label: 'AI & Security Systems', href: '#faceRecognition' },
   ];
 
   const socialLinks = [
@@ -110,7 +109,7 @@ export function Footer() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block text-sm uppercase tracking-wide text-text-secondary transition hover:text-text-primary"
+                  className="block text-sm text-text-secondary transition hover:text-text-primary"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(link.href);

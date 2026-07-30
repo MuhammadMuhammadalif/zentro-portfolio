@@ -82,7 +82,7 @@ export function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleNavClick('#contact')}
-          className="hidden rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90 md:block"
+          className="hidden rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-[#0a0e27] transition hover:bg-accent-secondary md:block"
         >
           Schedule a Consultation
         </motion.button>
@@ -123,7 +123,7 @@ export function Navbar() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => handleNavClick('#contact')}
-            className="w-full rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90"
+            className="w-full rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-[#0a0e27] transition hover:bg-accent-secondary"
           >
             Schedule a Consultation
           </motion.button>
