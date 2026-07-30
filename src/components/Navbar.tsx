@@ -7,10 +7,11 @@ import { logo } from '@/lib/assets';
 import { scrollToSection } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Portfolio', href: '#caseStudies' },
+  { label: 'Services', href: '#solutions' },
+  { label: 'Automation', href: '#automation' },
+  { label: 'Work', href: '#caseStudies' },
+  { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export function Navbar() {

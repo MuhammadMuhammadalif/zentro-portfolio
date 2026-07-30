@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiArrowRight, FiPhone, FiZap, FiCode, FiShield } from 'react-icons/fi';
@@ -57,7 +56,6 @@ const solutions: Solution[] = [
 ];
 
 export function Solutions() {
-  const [hovered, setHovered] = useState<number | null>(null);
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -84,16 +82,16 @@ export function Solutions() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative cursor-pointer rounded-xl border border-dark-border bg-dark-card p-8"
-              onMouseEnter={() => setHovered(solution.id)}
-              onMouseLeave={() => setHovered(null)}
-              whileHover={{ scale: 1.02 }}
-              style={{
-                transform:
-                  hovered === solution.id
-                    ? 'perspective(1000px) rotateX(2deg) rotateY(2deg)'
-                    : 'none',
+              className="group relative cursor-pointer rounded-xl border border-dark-border bg-dark-card p-8 transition-colors hover:border-accent-primary/50"
+              onClick={() => {
+                // Update URL hash for highlighting
+                window.history.pushState(null, '', solution.relatedCaseStudy);
+                // Scroll to the case study
+                scrollToSection(solution.relatedCaseStudy);
+                // Trigger hashchange event for the highlight effect
+                window.dispatchEvent(new HashChangeEvent('hashchange'));
               }}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-primary to-accent-secondary opacity-0 transition group-hover:opacity-10" />
 
@@ -124,9 +122,10 @@ export function Solutions() {
                 ))}
               </div>
 
-              <button
+              <span
                 className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-card"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click double-fire
                   // Update URL hash for highlighting
                   window.history.pushState(null, '', solution.relatedCaseStudy);
                   // Scroll to the case study
@@ -134,10 +133,12 @@ export function Solutions() {
                   // Trigger hashchange event for the highlight effect
                   window.dispatchEvent(new HashChangeEvent('hashchange'));
                 }}
+                role="button"
+                tabIndex={0}
                 aria-label={`View examples for ${solution.title}`}
               >
                 View Examples <FiArrowRight />
-              </button>
+              </span>
             </motion.div>
           ))}
         </div>
