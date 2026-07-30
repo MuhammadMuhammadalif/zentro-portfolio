@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiCheckCircle } from 'react-icons/fi';
+import { FiCheckCircle, FiTarget } from 'react-icons/fi';
 import { getCompanyName } from '@/lib/utils';
 
 const points = [
@@ -67,9 +67,14 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="rounded-xl border border-dark-border bg-dark-card p-8"
           >
-            <h4 className="mb-4 text-xl font-bold text-text-primary">
-              Our Philosophy
-            </h4>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="rounded-lg bg-accent-primary/10 p-3">
+                <FiTarget className="text-2xl text-accent-primary" />
+              </div>
+              <h4 className="text-xl font-bold text-text-primary">
+                Our Philosophy
+              </h4>
+            </div>
             <p className="text-text-secondary">
               We don&apos;t just write code—we solve problems. Every line of code
               we write is designed to make your business more efficient, your

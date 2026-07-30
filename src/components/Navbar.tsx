@@ -11,6 +11,7 @@ const navItems = [
   { label: 'Automation', href: '#automation' },
   { label: 'Work', href: '#caseStudies' },
   { label: 'Process', href: '#process' },
+  { label: 'Why Us', href: '#whyChooseUs' },
   { label: 'About', href: '#about' },
 ];
 

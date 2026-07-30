@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { FiCheckCircle } from 'react-icons/fi';
 import { projectImages, techIcons } from '@/lib/assets';
 import { useEffect, useState } from 'react';
+import { scrollToSection } from '@/lib/utils';
 
 interface CaseStudy {
   id: string;
@@ -239,9 +240,7 @@ export function CaseStudies() {
                   </ul>
 
                   <button
-                    onClick={() =>
-                      (window.location.href = `mailto:${process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'hello@example.com'}?subject=Inquiry: ${study.name}`)
-                    }
+                    onClick={() => scrollToSection('#contact')}
                     className="rounded bg-accent-primary px-6 py-3 font-bold text-dark-bg transition hover:bg-accent-secondary"
                   >
                     Build Something Similar
