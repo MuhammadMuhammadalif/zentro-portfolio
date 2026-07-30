@@ -98,10 +98,10 @@ export function Automation() {
               <FiZap className="text-5xl text-accent-primary" />
             </div>
           </motion.div>
-          <h2 className="mb-4 text-4xl font-bold text-text-primary">
+          <h2 className="mb-4 text-3xl font-bold text-text-primary sm:text-4xl">
             Automation That Works While You Don't
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-text-secondary">
+          <p className="mx-auto max-w-2xl text-base text-text-secondary sm:text-lg">
             Stop wasting time on repetitive tasks. Our automation solutions handle the mundane 
             so you can focus on what matters—growing your business.
           </p>
@@ -159,11 +159,11 @@ export function Automation() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="rounded-xl border border-dark-border bg-dark-card p-10">
-            <h3 className="mb-4 text-2xl font-bold text-text-primary">
+          <div className="rounded-xl border border-dark-border bg-dark-card p-6 sm:p-10">
+            <h3 className="mb-4 text-xl font-bold text-text-primary sm:text-2xl">
               Ready to Automate Your Workflow?
             </h3>
-            <p className="mb-6 text-text-secondary">
+            <p className="mb-6 text-sm text-text-secondary sm:text-base">
               Let's discuss how automation can transform your business operations and save you countless hours.
             </p>
             <motion.button
@@ -173,7 +173,7 @@ export function Automation() {
                 const contactSection = document.querySelector('#contact');
                 contactSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="rounded-full bg-accent-primary px-8 py-4 font-bold text-dark-bg transition hover:bg-accent-secondary"
+              className="w-full rounded-full bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary sm:w-auto sm:px-8 sm:py-4"
             >
               Schedule a Consultation
             </motion.button>

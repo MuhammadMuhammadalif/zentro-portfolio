@@ -95,12 +95,12 @@ export function Solutions() {
             >
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-primary to-accent-secondary opacity-0 transition group-hover:opacity-10" />
 
-              <solution.icon className="mb-4 text-4xl text-accent-primary" />
+              <solution.icon className="mb-4 text-3xl text-accent-primary sm:text-4xl" />
 
-              <h3 className="mb-3 text-xl font-bold text-text-primary">
+              <h3 className="mb-3 text-lg font-bold text-text-primary sm:text-xl">
                 {solution.title}
               </h3>
-              <p className="mb-6 text-text-secondary">{solution.description}</p>
+              <p className="mb-6 text-sm text-text-secondary sm:text-base">{solution.description}</p>
 
               <div className="mb-6 flex flex-wrap gap-3">
                 {solution.techs.map((tech) => (

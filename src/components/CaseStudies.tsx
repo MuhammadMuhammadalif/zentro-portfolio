@@ -187,11 +187,11 @@ export function CaseStudies() {
                   : {}
               }
             >
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 md:gap-8">
                 <img
                   src={study.image}
                   alt={study.name}
-                  className="h-64 w-full rounded-lg object-cover"
+                  className="h-48 w-full rounded-lg object-cover sm:h-56 md:h-64"
                   loading="lazy"
                   decoding="async"
                 />
@@ -207,10 +207,10 @@ export function CaseStudies() {
                     {study.status.toUpperCase()}
                   </span>
 
-                  <h3 className="mb-2 text-2xl font-bold text-text-primary">
+                  <h3 className="mb-2 text-xl font-bold text-text-primary sm:text-2xl">
                     {study.name}
                   </h3>
-                  <p className="mb-4 text-text-secondary">{study.duration}</p>
+                  <p className="mb-4 text-sm text-text-secondary sm:text-base">{study.duration}</p>
 
                   <div className="mb-4 flex flex-wrap gap-2">
                     {study.techs.map((tech) => (
@@ -225,13 +225,13 @@ export function CaseStudies() {
                     ))}
                   </div>
 
-                  <p className="mb-6 text-text-secondary">{study.description}</p>
+                  <p className="mb-6 text-sm text-text-secondary sm:text-base">{study.description}</p>
 
                   <ul className="mb-6 space-y-2">
                     {study.outcomes.map((outcome, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-text-secondary"
+                        className="flex items-start gap-3 text-sm text-text-secondary sm:text-base"
                       >
                         <FiCheckCircle className="mt-1 flex-shrink-0 text-accent-success" />
                         {outcome}
@@ -241,7 +241,7 @@ export function CaseStudies() {
 
                   <button
                     onClick={() => scrollToSection('#contact')}
-                    className="rounded bg-accent-primary px-6 py-3 font-bold text-dark-bg transition hover:bg-accent-secondary"
+                    className="w-full rounded bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary sm:w-auto"
                   >
                     Build Something Similar
                   </button>

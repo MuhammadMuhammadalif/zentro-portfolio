@@ -91,7 +91,7 @@ export function Process() {
             transition={{ duration: 0.8 }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative h-[400px] overflow-hidden rounded-xl border border-dark-border bg-dark-bg/50 lg:h-[600px]">
+            <div className="relative h-[300px] overflow-hidden rounded-xl border border-dark-border bg-dark-bg/50 sm:h-[400px] lg:h-[600px]">
               <ProcessScene />
             </div>
             
@@ -100,12 +100,12 @@ export function Process() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 rounded-xl border border-dark-border bg-dark-bg p-6 text-center"
+              className="mt-4 rounded-xl border border-dark-border bg-dark-bg p-4 text-center sm:mt-6 sm:p-6"
             >
-              <p className="mb-2 text-sm font-bold text-accent-primary">
+              <p className="mb-2 text-xs font-bold text-accent-primary sm:text-sm">
                 INTERACTIVE WORKFLOW
               </p>
-              <p className="text-sm text-text-secondary">
+              <p className="text-xs text-text-secondary sm:text-sm">
                 Our seamless process ensures every step connects perfectly to deliver exceptional results.
               </p>
             </motion.div>
@@ -206,10 +206,10 @@ export function Process() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <p className="mb-6 text-lg text-text-secondary">
+          <p className="mb-6 text-base text-text-secondary sm:text-lg">
             Ready to get started? Let's build something amazing together.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -217,7 +217,7 @@ export function Process() {
                 const contactSection = document.querySelector('#contact');
                 contactSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="rounded-full bg-accent-primary px-8 py-4 font-bold text-dark-bg transition hover:bg-accent-secondary"
+              className="w-full rounded-full bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary sm:w-auto sm:px-8 sm:py-4"
             >
               Start Your Project
             </motion.button>
@@ -228,7 +228,7 @@ export function Process() {
                 const caseStudiesSection = document.querySelector('#caseStudies');
                 caseStudiesSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="rounded-full border border-accent-primary px-8 py-4 font-bold text-accent-primary transition hover:bg-accent-primary/10"
+              className="w-full rounded-full border border-accent-primary px-6 py-3 text-sm font-bold text-accent-primary transition hover:bg-accent-primary/10 sm:w-auto sm:px-8 sm:py-4"
             >
               View Our Work
             </motion.button>

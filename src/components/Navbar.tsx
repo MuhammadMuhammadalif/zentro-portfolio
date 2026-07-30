@@ -48,7 +48,7 @@ export function Navbar() {
       className="fixed top-0 z-50 w-full border-b border-dark-border bg-dark-bg/95 backdrop-blur"
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex max-w-7xl items-center px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={() => handleNavClick('#hero')}
@@ -88,7 +88,7 @@ export function Navbar() {
         </motion.button>
 
         <button
-          className="ml-auto text-text-primary md:hidden"
+          className="relative z-50 flex items-center justify-center rounded-md p-2 text-text-primary transition hover:bg-dark-card md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}

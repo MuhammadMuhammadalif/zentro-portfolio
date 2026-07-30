@@ -65,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-10 max-w-2xl text-lg text-text-secondary md:text-xl z-20 relative"
+          className="relative z-20 mb-10 max-w-2xl px-4 text-base text-text-secondary sm:px-0 sm:text-lg md:text-xl"
         >
           Enterprise-grade software development, automation, AI & security
           solutions for businesses ready to scale.
@@ -75,13 +75,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-col gap-4 sm:flex-row"
+          className="flex w-full max-w-lg flex-col gap-4 px-4 sm:flex-row sm:px-0"
         >
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)' }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('#contact')}
-            className="flex items-center justify-center gap-2 rounded-lg bg-accent-primary px-8 py-4 font-bold text-dark-bg transition hover:bg-accent-primary/90"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-primary/90 sm:w-auto sm:px-8 sm:py-4"
           >
             Start Your Project <FiArrowRight />
           </motion.button>
@@ -89,7 +89,7 @@ export function Hero() {
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 0, 110, 0.5)' }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('#caseStudies')}
-            className="flex items-center justify-center gap-2 rounded-lg border border-accent-secondary px-8 py-4 font-bold text-accent-secondary transition hover:bg-accent-secondary/10"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-accent-secondary px-6 py-3 text-sm font-bold text-accent-secondary transition hover:bg-accent-secondary/10 sm:w-auto sm:px-8 sm:py-4"
           >
             View Our Work
           </motion.button>

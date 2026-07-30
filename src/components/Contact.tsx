@@ -84,10 +84,10 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold text-text-primary">
+          <h2 className="mb-4 text-2xl font-bold text-text-primary sm:text-3xl">
             Ready to Automate and Scale Your Business?
           </h2>
-          <p className="text-text-secondary">
+          <p className="text-sm text-text-secondary sm:text-base">
             Let&apos;s discuss your project and find the perfect solution.
           </p>
         </motion.div>
@@ -243,19 +243,19 @@ export function Contact() {
         >
           <p className="mb-4 text-text-secondary">Or reach out directly:</p>
 
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
             <a
               href={`mailto:${getCompanyEmail()}`}
-              className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary"
+              className="inline-flex items-center gap-2 text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
             >
               <FiMail /> {getCompanyEmail()}
             </a>
 
-            <span className="text-text-secondary">|</span>
+            <span className="hidden text-text-secondary sm:inline">|</span>
 
             <a
               href={getCalendlyUrl()}
-              className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary"
+              className="inline-flex items-center gap-2 text-center text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
             >
               <FiCalendar /> Schedule a Free Consultation
             </a>
