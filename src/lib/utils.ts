@@ -1,49 +1,33 @@
 export function scrollToSection(href: string) {
-  const element = document.querySelector(href);
+  // Remove the # if it's already there, then add it back for querySelector
+  const targetId = href.startsWith('#') ? href : `#${href}`;
+  const element = document.querySelector(targetId);
   
   if (element) {
-    console.log(`Scrolling to element: ${href}`);
+    console.log(`Scrolling to element: ${targetId}`);
     
-    // Check if smooth scrolling is supported
-    const supportsSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+    // Get the element's position
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    // Account for fixed navbar (adjust offset as needed)
+    const navbarHeight = 80; // Approximate navbar height
+    const offsetPosition = elementPosition - navbarHeight;
     
-    if (supportsSmoothScroll) {
-      element.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start',
-        inline: 'nearest'
-      });
-    } else {
-      // Fallback for browsers that don't support smooth scrolling
-      element.scrollIntoView(true);
-      
-      // Manual smooth scroll fallback
-      const scrollTo = element.getBoundingClientRect().top + window.pageYOffset;
-      const duration = 500; // milliseconds
-      const start = window.pageYOffset;
-      const distance = scrollTo - start;
-      let startTime: number | null = null;
-      
-      function animation(currentTime: number) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        
-        window.scrollTo(0, start + distance * progress);
-        
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animation);
-        }
-      }
-      
-      requestAnimationFrame(animation);
-    }
+    // Smooth scroll to the position
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   } else {
-    console.error(`Element not found: ${href}`);
+    console.error(`Element not found: ${targetId}`);
     // Fallback: scroll to the case studies section
     const caseStudiesSection = document.querySelector('#caseStudies');
     if (caseStudiesSection) {
-      caseStudiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const sectionPosition = caseStudiesSection.getBoundingClientRect().top + window.pageYOffset;
+      const navbarHeight = 80;
+      window.scrollTo({
+        top: sectionPosition - navbarHeight,
+        behavior: 'smooth'
+      });
     }
   }
 }

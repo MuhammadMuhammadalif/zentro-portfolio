@@ -127,7 +127,12 @@ export function Solutions() {
               <button
                 className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-card"
                 onClick={() => {
+                  // Update URL hash for highlighting
+                  window.history.pushState(null, '', solution.relatedCaseStudy);
+                  // Scroll to the case study
                   scrollToSection(solution.relatedCaseStudy);
+                  // Trigger hashchange event for the highlight effect
+                  window.dispatchEvent(new HashChangeEvent('hashchange'));
                 }}
                 aria-label={`View examples for ${solution.title}`}
               >

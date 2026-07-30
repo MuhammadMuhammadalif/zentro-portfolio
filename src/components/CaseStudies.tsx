@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiCheckCircle } from 'react-icons/fi';
 import { projectImages, techIcons } from '@/lib/assets';
+import { useEffect, useState } from 'react';
 
 interface CaseStudy {
   id: string;
@@ -96,6 +97,37 @@ const caseStudies: CaseStudy[] = [
 
 export function CaseStudies() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const [highlightedId, setHighlightedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Check if there's a hash in the URL and highlight that case study
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const caseStudy = caseStudies.find(study => study.id === id);
+      if (caseStudy) {
+        setHighlightedId(id);
+        // Remove highlight after 3 seconds
+        setTimeout(() => setHighlightedId(null), 3000);
+      }
+    }
+
+    // Listen for hash changes (when user clicks solution buttons)
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace('#', '');
+        const caseStudy = caseStudies.find(study => study.id === id);
+        if (caseStudy) {
+          setHighlightedId(id);
+          setTimeout(() => setHighlightedId(null), 3000);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -141,9 +173,18 @@ export function CaseStudies() {
             <motion.article
               key={study.id}
               id={study.id}
-              className="rounded-xl border border-dark-border bg-dark-card p-8 transition hover:border-accent-primary"
+              className={`rounded-xl border p-8 transition-all duration-500 ${
+                highlightedId === study.id
+                  ? 'border-accent-primary bg-dark-card shadow-lg shadow-accent-primary/20'
+                  : 'border-dark-border bg-dark-card hover:border-accent-primary'
+              }`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
+              animate={
+                highlightedId === study.id
+                  ? { scale: [1, 1.02, 1], transition: { duration: 0.5 } }
+                  : {}
+              }
             >
               <div className="grid gap-8 md:grid-cols-2">
                 <img

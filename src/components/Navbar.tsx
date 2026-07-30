@@ -46,7 +46,7 @@ export function Navbar() {
       className="fixed top-0 z-50 w-full border-b border-dark-border bg-dark-bg/95 backdrop-blur"
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center px-4 py-4">
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={() => handleNavClick('#hero')}
@@ -56,7 +56,7 @@ export function Navbar() {
           <img src={logo} alt="Logo" className="h-8" />
         </motion.button>
 
-        <div className="hidden gap-8 md:flex">
+        <div className="hidden flex-1 justify-center gap-8 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -76,8 +76,17 @@ export function Navbar() {
           ))}
         </div>
 
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => handleNavClick('#contact')}
+          className="hidden rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90 md:block"
+        >
+          Schedule a Free Consultation
+        </motion.button>
+
         <button
-          className="text-text-primary md:hidden"
+          className="ml-auto text-text-primary md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
@@ -109,6 +118,13 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => handleNavClick('#contact')}
+            className="w-full rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90"
+          >
+            Schedule a Free Consultation
+          </motion.button>
         </motion.div>
       )}
     </nav>
