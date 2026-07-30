@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiMessageCircle, FiLayout, FiCode, FiCheckCircle, FiSend } from 'react-icons/fi';
 import type { IconType } from 'react-icons';
+import dynamic from 'next/dynamic';
+
+// Dynamically import 3D scene to avoid SSR issues
+const ProcessScene = dynamic(
+  () => import('./3D/ProcessScene').then((mod) => mod.ProcessScene),
+  { ssr: false }
+);
 
 interface ProcessStep {
   id: number;
@@ -76,87 +83,119 @@ export function Process() {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Connecting Line */}
-          <div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary md:block" />
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          {/* 3D Visualization - Left Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="relative order-2 lg:order-1"
+          >
+            <div className="relative h-[400px] overflow-hidden rounded-xl border border-dark-border bg-dark-bg/50 lg:h-[600px]">
+              <ProcessScene />
+            </div>
+            
+            {/* Info Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-6 rounded-xl border border-dark-border bg-dark-bg p-6 text-center"
+            >
+              <p className="mb-2 text-sm font-bold text-accent-primary">
+                INTERACTIVE WORKFLOW
+              </p>
+              <p className="text-sm text-text-secondary">
+                Our seamless process ensures every step connects perfectly to deliver exceptional results.
+              </p>
+            </motion.div>
+          </motion.div>
 
-          <div className="space-y-12">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={step.id}
-                initial={{ opacity: 0, x: -50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="relative"
-              >
-                <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                  {/* Step Number & Icon */}
-                  <div className="relative flex-shrink-0">
-                    <motion.div
-                      className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-dark-card bg-gradient-to-br from-accent-primary to-accent-secondary"
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <step.icon className="text-2xl text-dark-bg" />
-                    </motion.div>
-                    
-                    {/* Pulse Animation */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full bg-accent-primary"
-                      animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: [0.5, 0, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    />
-                  </div>
+          {/* Process Steps - Right Side */}
+          <div className="order-1 lg:order-2">
+            <div className="relative">
+              {/* Connecting Line */}
+              <div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary md:block" />
 
-                  {/* Content */}
+              <div className="space-y-8">
+                {processSteps.map((step, index) => (
                   <motion.div
-                    className="flex-1 rounded-xl border border-dark-border bg-dark-bg p-6 md:p-8"
-                    whileHover={{ scale: 1.02 }}
+                    key={step.id}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                    className="relative"
                   >
-                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span className="text-sm font-bold text-accent-primary">
-                          STEP {step.id}
-                        </span>
-                        <h3 className="text-xl font-bold text-text-primary md:text-2xl">
-                          {step.title}
-                        </h3>
+                    <div className="flex flex-col gap-6 md:flex-row md:items-start">
+                      {/* Step Number & Icon */}
+                      <div className="relative flex-shrink-0">
+                        <motion.div
+                          className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-dark-card bg-gradient-to-br from-accent-primary to-accent-secondary"
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <step.icon className="text-2xl text-dark-bg" />
+                        </motion.div>
+                        
+                        {/* Pulse Animation */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full bg-accent-primary"
+                          animate={{
+                            scale: [1, 1.3, 1],
+                            opacity: [0.5, 0, 0.5],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: index * 0.2,
+                          }}
+                        />
                       </div>
-                      <span className="rounded-full bg-accent-primary/10 px-4 py-1 text-sm font-bold text-accent-primary">
-                        {step.duration}
-                      </span>
-                    </div>
-                    
-                    <p className="text-text-secondary">
-                      {step.description}
-                    </p>
 
-                    {/* Progress Bar */}
-                    <motion.div
-                      className="mt-4 h-1.5 overflow-hidden rounded-full bg-dark-border"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                    >
+                      {/* Content */}
                       <motion.div
-                        className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
-                        initial={{ width: '0%' }}
-                        whileInView={{ width: '100%' }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                      />
-                    </motion.div>
+                        className="flex-1 rounded-xl border border-dark-border bg-dark-bg p-4 md:p-6"
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                          <div>
+                            <span className="text-xs font-bold text-accent-primary">
+                              STEP {step.id}
+                            </span>
+                            <h3 className="text-lg font-bold text-text-primary md:text-xl">
+                              {step.title}
+                            </h3>
+                          </div>
+                          <span className="rounded-full bg-accent-primary/10 px-3 py-1 text-xs font-bold text-accent-primary">
+                            {step.duration}
+                          </span>
+                        </div>
+                        
+                        <p className="text-sm text-text-secondary">
+                          {step.description}
+                        </p>
+
+                        {/* Progress Bar */}
+                        <motion.div
+                          className="mt-3 h-1 overflow-hidden rounded-full bg-dark-border"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                        >
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
+                            initial={{ width: '0%' }}
+                            whileInView={{ width: '100%' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
+                          />
+                        </motion.div>
+                      </motion.div>
+                    </div>
                   </motion.div>
-                </div>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

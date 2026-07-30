@@ -83,7 +83,7 @@ export function Navbar() {
           onClick={() => handleNavClick('#contact')}
           className="hidden rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90 md:block"
         >
-          Schedule a Free Consultation
+          Schedule a Consultation
         </motion.button>
 
         <button
@@ -124,7 +124,7 @@ export function Navbar() {
             onClick={() => handleNavClick('#contact')}
             className="w-full rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-dark-bg transition hover:bg-accent-primary/90"
           >
-            Schedule a Free Consultation
+            Schedule a Consultation
           </motion.button>
         </motion.div>
       )}
