@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiMail, FiCalendar } from 'react-icons/fi';
-import { getCompanyEmail, getCalendlyUrl } from '@/lib/utils';
+import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -49,11 +48,11 @@ export function Contact() {
 
     setStatus('loading');
 
-    // In a real application, this would be an API call
-    console.log('Form submitted:', formData);
-    console.log('Would send email to:', getCompanyEmail());
+    // Create mailto link with form data
+    const mailtoLink = `mailto:itsabubakar103@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    window.location.href = mailtoLink;
 
-    // Simulate API call
     setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -61,7 +60,7 @@ export function Contact() {
       setTimeout(() => {
         setStatus('idle');
       }, 3000);
-    }, 1500);
+    }, 500);
   };
 
   const handleChange = (
@@ -85,10 +84,10 @@ export function Contact() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-2xl font-bold text-text-primary sm:text-3xl">
-            Ready to Automate and Scale Your Business?
+            Let&apos;s Work Together
           </h2>
           <p className="text-sm text-text-secondary sm:text-base">
-            Let&apos;s discuss your project and find the perfect solution.
+            Have a project in mind? I&apos;d love to hear about it and see how I can help.
           </p>
         </motion.div>
 
@@ -167,7 +166,7 @@ export function Contact() {
               htmlFor="message"
               className="mb-2 block text-sm font-medium text-text-secondary"
             >
-              Project Description *
+              Message *
             </label>
             <textarea
               key="message-input"
@@ -175,7 +174,7 @@ export function Contact() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us about your project, timeline, and goals..."
+              placeholder="Tell me about your project or opportunity..."
               rows={5}
               className={`w-full resize-none rounded border px-4 py-3 text-text-primary placeholder-text-secondary outline-none transition ${
                 errors.message
@@ -207,7 +206,7 @@ export function Contact() {
                 : 'bg-accent-primary hover:bg-accent-secondary'
             } text-dark-bg`}
           >
-            {status === 'loading' ? 'Sending...' : 'Send Message'}
+            {status === 'loading' ? 'Opening Email...' : 'Send Message'}
           </motion.button>
 
           {status === 'success' && (
@@ -217,7 +216,7 @@ export function Contact() {
               className="rounded-lg bg-accent-success/10 p-4 text-center"
             >
               <p className="text-accent-success">
-                Message sent! We&apos;ll get back to you within 24 hours.
+                Email client opened! Your message is ready to send.
               </p>
             </motion.div>
           )}
@@ -241,23 +240,34 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 border-t border-dark-border pt-8 text-center"
         >
-          <p className="mb-4 text-text-secondary">Or reach out directly:</p>
+          <p className="mb-6 text-text-secondary">Connect with me:</p>
 
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
             <a
-              href={`mailto:${getCompanyEmail()}`}
+              href="mailto:itsabubakar103@gmail.com"
               className="inline-flex items-center gap-2 text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <FiMail /> {getCompanyEmail()}
+              <FiMail className="text-xl" /> itsabubakar103@gmail.com
             </a>
 
-            <span className="hidden text-text-secondary sm:inline">|</span>
+            <a
+              href="https://www.linkedin.com/in/abubakarvibe/"
+              className="inline-flex items-center gap-2 text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiLinkedin className="text-xl" /> LinkedIn
+            </a>
 
             <a
-              href={getCalendlyUrl()}
-              className="inline-flex items-center gap-2 text-center text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
+              href="https://github.com/MuhammadMuhammadalif"
+              className="inline-flex items-center gap-2 text-sm text-accent-primary transition hover:text-accent-secondary sm:text-base"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <FiCalendar /> Schedule a Free Consultation
+              <FiGithub className="text-xl" /> GitHub
             </a>
           </div>
         </motion.div>

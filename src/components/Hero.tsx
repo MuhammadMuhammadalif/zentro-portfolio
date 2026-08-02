@@ -13,9 +13,9 @@ const HeroScene = dynamic(() => import('./3D/HeroScene').then((mod) => mod.HeroS
 })
 
 const headlines = [
-  ['We Build', 'Software That', 'Scales.'],
-  ['Automation', 'That Saves', 'Time.'],
-  ['AI Solutions', 'That', 'Deliver.'],
+  ['Full-Stack', 'Developer &', 'Problem Solver'],
+  ['Building', 'Scalable', 'Solutions'],
+  ['AI & Software', 'Engineering', 'Enthusiast'],
 ];
 
 export function Hero() {
@@ -67,8 +67,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative z-20 mb-10 max-w-2xl px-4 text-base text-text-secondary sm:px-0 sm:text-lg md:text-xl"
         >
-          Enterprise-grade software development, automation, AI & security
-          solutions for businesses ready to scale.
+          BS Computer Science student at UET Lahore | Crafting modern web applications
+          with React, Node.js, and AI-powered solutions
         </motion.p>
 
         <motion.div
@@ -83,15 +83,15 @@ export function Hero() {
             onClick={() => scrollToSection('#contact')}
             className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-primary/90 sm:w-auto sm:px-8 sm:py-4"
           >
-            Start Your Project <FiArrowRight />
+            Get In Touch <FiArrowRight />
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 0, 110, 0.5)' }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('#caseStudies')}
+            onClick={() => scrollToSection('#projects')}
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-accent-secondary px-6 py-3 text-sm font-bold text-accent-secondary transition hover:bg-accent-secondary/10 sm:w-auto sm:px-8 sm:py-4"
           >
-            View Our Work
+            View My Work
           </motion.button>
         </motion.div>
       </div>

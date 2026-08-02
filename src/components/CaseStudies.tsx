@@ -7,7 +7,7 @@ import { projectImages, techIcons } from '@/lib/assets';
 import { useEffect, useState } from 'react';
 import { scrollToSection } from '@/lib/utils';
 
-interface CaseStudy {
+interface Project {
   id: string;
   name: string;
   duration: string;
@@ -15,83 +15,92 @@ interface CaseStudy {
   image: string;
   description: string;
   techs: string[];
-  outcomes: string[];
+  features: string[];
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
-const caseStudies: CaseStudy[] = [
+const projects: Project[] = [
   {
-    id: 'smsAutomation',
-    name: 'SMS Automation for Membership Platform',
-    duration: '4 weeks · Ongoing',
-    status: 'ongoing',
-    image: projectImages.sms,
-    description:
-      'Automated SMS onboarding, payment reminders, and win-back campaigns for a fitness membership platform using Twilio and Systeme.io integrations.',
-    techs: ['systeme', 'zapier', 'twilio', 'dotnet'],
-    outcomes: [
-      'Zero manual follow-ups required',
-      'Onboarding completion improved by 45%',
-      'Running live in production',
-    ],
-  },
-  {
-    id: 'workflowAutomation',
-    name: 'Workflow Automation for E-commerce',
-    duration: '6 weeks · Completed',
-    status: 'completed',
-    image: projectImages.workflow,
-    description:
-      'Custom n8n workflows connecting Shopify, QuickBooks, and shipping APIs to automate order processing, inventory sync, and accounting.',
-    techs: ['n8n', 'zapier', 'restapi', 'webhook'],
-    outcomes: [
-      'Reduced manual data entry by 90%',
-      'Order processing time cut from hours to minutes',
-      'Implemented real-time inventory tracking',
-    ],
-  },
-  {
-    id: 'twilioDashboard',
-    name: 'Twilio-Powered Customer Service Dashboard',
+    id: 'easybuy',
+    name: 'EasyBuy — Full-Stack E-Commerce Platform',
     duration: '8 weeks · Completed',
     status: 'completed',
-    image: projectImages.twilio,
+    image: projectImages.ecommerce,
     description:
-      'Custom dashboard for managing SMS, voice, and WhatsApp communications with analytics, automation rules, and real-time monitoring.',
-    techs: ['twilio', 'react', 'nodejs', 'sql'],
-    outcomes: [
-      'Customer response time reduced by 70%',
-      '24/7 automated support coverage',
-      'Integration with existing CRM system',
+      'A full-stack e-commerce application that provides a complete shopping experience with secure authentication and product management features.',
+    techs: ['react', 'nodejs', 'sql', 'restapi'],
+    features: [
+      'User authentication and authorization using JWT',
+      'Admin dashboard for product management',
+      'Product CRUD operations with image upload',
+      'RESTful API architecture',
+    ],
+    githubUrl: 'https://github.com/MuhammadMuhammadalif',
+  },
+  {
+    id: 'aiResearch',
+    name: 'AI-Powered Research Knowledge Management System',
+    duration: '10 weeks · Completed',
+    status: 'completed',
+    image: projectImages.ai,
+    description:
+      'An intelligent system designed to organize, analyze, and manage research papers using AI techniques and natural language processing.',
+    techs: ['python', 'sql', 'restapi', 'iot'],
+    features: [
+      'Document processing and analysis',
+      'Semantic search capabilities',
+      'NLP-based text analysis',
+      'Research knowledge organization',
     ],
   },
   {
-    id: 'instituteManagement',
-    name: 'Institute Management System',
+    id: 'chessEngine',
+    name: 'Chess Engine Using AI Algorithms',
+    duration: '6 weeks · Completed',
+    status: 'completed',
+    image: projectImages.chess,
+    description:
+      'A chess engine implementing classical artificial intelligence search techniques for decision-making and game optimization.',
+    techs: ['python', 'cpp', 'restapi', 'iot'],
+    features: [
+      'Minimax-based move prediction',
+      'Alpha-beta pruning optimization',
+      'Efficient board state evaluation',
+      'Zobrist hashing for position tracking',
+    ],
+    githubUrl: 'https://github.com/MuhammadMuhammadalif',
+  },
+  {
+    id: 'schoolManagement',
+    name: 'School Management Backend System',
     duration: '12 weeks · Completed',
     status: 'completed',
-    image: projectImages.institute,
+    image: projectImages.school,
     description:
-      'Comprehensive platform for student enrollment, course management, attendance tracking, and payment processing with parent portals.',
-    techs: ['react', 'dotnet', 'sql', 'restapi'],
-    outcomes: [
-      'Digitalized entire institute operations',
-      'Parent engagement increased by 60%',
-      'Automated fee collection and reminders',
+      'A scalable backend system developed using enterprise-level software architecture principles with clean architecture implementation.',
+    techs: ['dotnet', 'sql', 'restapi', 'git'],
+    features: [
+      'Clean Architecture implementation',
+      'REST API development',
+      'Database design and management',
+      'Modular and maintainable code structure',
     ],
   },
   {
-    id: 'faceRecognition',
-    name: 'Face Recognition Security System',
-    duration: '10 weeks · Ongoing',
+    id: 'waf',
+    name: 'Web Application Firewall (WAF)',
+    duration: '8 weeks · Ongoing',
     status: 'ongoing',
-    image: projectImages.faceRecognition,
+    image: projectImages.security,
     description:
-      'IoT-based security system using OpenCV for face recognition, real-time alerts, and access control with mobile app integration.',
-    techs: ['python', 'opencv', 'iot', 'restapi'],
-    outcomes: [
-      '99.8% accurate face detection',
-      'Real-time intruder alerts via mobile',
-      'Access logs with timestamped images',
+      'A security-focused project designed to analyze and protect web applications against malicious requests and common web attacks.',
+    techs: ['python', 'nodejs', 'restapi', 'git'],
+    features: [
+      'Request filtering and validation',
+      'Security rule implementation',
+      'Web attack pattern analysis',
+      'Application security concepts',
     ],
   },
 ];
@@ -101,25 +110,25 @@ export function CaseStudies() {
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if there's a hash in the URL and highlight that case study
+    // Check if there's a hash in the URL and highlight that project
     const hash = window.location.hash;
     if (hash) {
       const id = hash.replace('#', '');
-      const caseStudy = caseStudies.find(study => study.id === id);
-      if (caseStudy) {
+      const project = projects.find(proj => proj.id === id);
+      if (project) {
         setHighlightedId(id);
         // Remove highlight after 3 seconds
         setTimeout(() => setHighlightedId(null), 3000);
       }
     }
 
-    // Listen for hash changes (when user clicks solution buttons)
+    // Listen for hash changes (when user clicks skill buttons)
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash) {
         const id = hash.replace('#', '');
-        const caseStudy = caseStudies.find(study => study.id === id);
-        if (caseStudy) {
+        const project = projects.find(proj => proj.id === id);
+        if (project) {
           setHighlightedId(id);
           setTimeout(() => setHighlightedId(null), 3000);
         }
@@ -150,7 +159,7 @@ export function CaseStudies() {
   };
 
   return (
-    <section id="caseStudies" ref={ref} className="bg-dark-bg px-4 py-24">
+    <section id="projects" ref={ref} className="bg-dark-bg px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -159,9 +168,9 @@ export function CaseStudies() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-text-primary">
-            Case Studies
+            Featured Projects
           </h2>
-          <p className="text-text-secondary">Real Projects. Real Outcomes.</p>
+          <p className="text-text-secondary">Real-world applications I&apos;ve built</p>
         </motion.div>
 
         <motion.div
@@ -170,27 +179,27 @@ export function CaseStudies() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          {caseStudies.map((study, index) => (
+          {projects.map((project, index) => (
             <motion.article
-              key={study.id}
-              id={study.id}
+              key={project.id}
+              id={project.id}
               className={`rounded-xl border p-8 transition-all duration-500 ${
-                highlightedId === study.id
+                highlightedId === project.id
                   ? 'border-accent-primary bg-dark-card shadow-lg shadow-accent-primary/20'
                   : 'border-dark-border bg-dark-card hover:border-accent-primary'
               }`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
               animate={
-                highlightedId === study.id
+                highlightedId === project.id
                   ? { scale: [1, 1.02, 1], transition: { duration: 0.5 } }
                   : {}
               }
             >
               <div className="grid gap-6 md:grid-cols-2 md:gap-8">
                 <img
-                  src={study.image}
-                  alt={study.name}
+                  src={project.image}
+                  alt={project.name}
                   className="h-48 w-full rounded-lg object-cover sm:h-56 md:h-64"
                   loading="lazy"
                   decoding="async"
@@ -199,21 +208,21 @@ export function CaseStudies() {
                 <div>
                   <span
                     className={`mb-3 inline-block rounded px-3 py-1 text-xs font-bold ${
-                      study.status === 'ongoing'
+                      project.status === 'ongoing'
                         ? 'bg-accent-success/20 text-accent-success'
                         : 'bg-accent-primary/20 text-accent-primary'
                     }`}
                   >
-                    {study.status.toUpperCase()}
+                    {project.status.toUpperCase()}
                   </span>
 
                   <h3 className="mb-2 text-xl font-bold text-text-primary sm:text-2xl">
-                    {study.name}
+                    {project.name}
                   </h3>
-                  <p className="mb-4 text-sm text-text-secondary sm:text-base">{study.duration}</p>
+                  <p className="mb-4 text-sm text-text-secondary sm:text-base">{project.duration}</p>
 
                   <div className="mb-4 flex flex-wrap gap-2">
-                    {study.techs.map((tech) => (
+                    {project.techs.map((tech) => (
                       <img
                         key={tech}
                         src={techIcons[tech]}
@@ -225,26 +234,50 @@ export function CaseStudies() {
                     ))}
                   </div>
 
-                  <p className="mb-6 text-sm text-text-secondary sm:text-base">{study.description}</p>
+                  <p className="mb-6 text-sm text-text-secondary sm:text-base">{project.description}</p>
 
                   <ul className="mb-6 space-y-2">
-                    {study.outcomes.map((outcome, idx) => (
+                    {project.features.map((feature, idx) => (
                       <li
                         key={idx}
                         className="flex items-start gap-3 text-sm text-text-secondary sm:text-base"
                       >
                         <FiCheckCircle className="mt-1 flex-shrink-0 text-accent-success" />
-                        {outcome}
+                        {feature}
                       </li>
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => scrollToSection('#contact')}
-                    className="w-full rounded bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary sm:w-auto"
-                  >
-                    Build Something Similar
-                  </button>
+                  <div className="flex flex-wrap gap-4">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded border border-accent-primary px-6 py-3 text-sm font-bold text-accent-primary transition hover:bg-accent-primary hover:text-dark-bg"
+                      >
+                        View on GitHub
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    {!project.githubUrl && !project.liveUrl && (
+                      <button
+                        onClick={() => scrollToSection('#contact')}
+                        className="rounded bg-accent-primary px-6 py-3 text-sm font-bold text-dark-bg transition hover:bg-accent-secondary"
+                      >
+                        Get In Touch
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.article>

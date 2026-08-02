@@ -3,64 +3,64 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
-  FiCheckCircle,
-  FiClock,
-  FiUsers,
   FiCode,
-  FiShield,
+  FiLayers,
+  FiTrendingUp,
+  FiTarget,
+  FiBookOpen,
   FiZap,
 } from 'react-icons/fi';
 import type { IconType } from 'react-icons';
 
-interface Benefit {
+interface Strength {
   id: number;
   icon: IconType;
   title: string;
   description: string;
 }
 
-const benefits: Benefit[] = [
+const strengths: Strength[] = [
   {
     id: 1,
-    icon: FiCheckCircle,
-    title: 'Results-Driven Solutions',
+    icon: FiCode,
+    title: 'Full-Stack Expertise',
     description:
-      'Every project is designed to deliver measurable outcomes. We focus on ROI and business impact, not just technical implementation.',
+      'Proficient in both frontend and backend development with hands-on experience in React, Node.js, ASP.NET Core, and modern web technologies.',
   },
   {
     id: 2,
-    icon: FiClock,
-    title: 'Fast Turnaround',
+    icon: FiLayers,
+    title: 'Clean Architecture',
     description:
-      'Our agile methodology ensures rapid prototyping and delivery. Most projects see initial results within 2-4 weeks.',
+      'Strong understanding of software design principles, clean architecture, and building maintainable, scalable applications.',
   },
   {
     id: 3,
-    icon: FiUsers,
-    title: 'Dedicated Support',
+    icon: FiTrendingUp,
+    title: 'Problem Solver',
     description:
-      'We provide ongoing support, maintenance, and updates. Your success is our priority long after project completion.',
+      'Skilled in algorithms and data structures with experience solving complex problems through efficient, optimized solutions.',
   },
   {
     id: 4,
-    icon: FiCode,
-    title: 'Clean, Scalable Code',
+    icon: FiTarget,
+    title: 'AI & Machine Learning',
     description:
-      'We write maintainable, well-documented code that scales with your business. Future-proof your investment.',
+      'Experience in NLP, machine learning algorithms, and building intelligent systems for real-world applications.',
   },
   {
     id: 5,
-    icon: FiShield,
-    title: 'Security First',
+    icon: FiBookOpen,
+    title: 'Continuous Learner',
     description:
-      'Enterprise-grade security practices including encryption, authentication, and regular security audits.',
+      'Passionate about staying updated with the latest technologies, frameworks, and best practices in software development.',
   },
   {
     id: 6,
     icon: FiZap,
-    title: 'Automation Expertise',
+    title: 'Fast Execution',
     description:
-      'Specialized in workflow automation that eliminates repetitive tasks, saving you time and reducing errors.',
+      'Ability to quickly learn new technologies and deliver working solutions with a focus on quality and efficiency.',
   },
 ];
 
@@ -87,7 +87,7 @@ export function WhyChooseUs() {
   };
 
   return (
-    <section id="whyChooseUs" ref={ref} className="bg-dark-card px-4 py-24">
+    <section id="strengths" ref={ref} className="bg-dark-card px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -96,10 +96,10 @@ export function WhyChooseUs() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-text-primary">
-            Why Choose Us
+            What I Bring to the Table
           </h2>
           <p className="text-text-secondary">
-            What Sets Us Apart From The Rest
+            Core strengths and technical capabilities
           </p>
         </motion.div>
 
@@ -109,20 +109,20 @@ export function WhyChooseUs() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          {benefits.map((benefit) => (
+          {strengths.map((strength) => (
             <motion.div
-              key={benefit.id}
+              key={strength.id}
               variants={itemVariants}
               className="rounded-xl border border-dark-border bg-dark-bg p-8 text-center"
               whileHover={{ scale: 1.03, borderColor: '#00d4ff' }}
             >
               <div className="mb-4 inline-flex items-center justify-center rounded-full bg-accent-primary/10 p-4">
-                <benefit.icon className="text-3xl text-accent-primary" />
+                <strength.icon className="text-3xl text-accent-primary" />
               </div>
               <h3 className="mb-3 text-xl font-bold text-text-primary">
-                {benefit.title}
+                {strength.title}
               </h3>
-              <p className="text-text-secondary">{benefit.description}</p>
+              <p className="text-text-secondary">{strength.description}</p>
             </motion.div>
           ))}
         </motion.div>

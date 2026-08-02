@@ -7,12 +7,12 @@ import { logo } from '@/lib/assets';
 import { scrollToSection } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Services', href: '#solutions' },
-  { label: 'Automation', href: '#automation' },
-  { label: 'Work', href: '#caseStudies' },
-  { label: 'Process', href: '#process' },
-  { label: 'Why Us', href: '#whyChooseUs' },
   { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Strengths', href: '#strengths' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export function Navbar() {
@@ -84,7 +84,7 @@ export function Navbar() {
           onClick={() => handleNavClick('#contact')}
           className="hidden rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-[#0a0e27] transition hover:bg-accent-secondary md:block"
         >
-          Schedule a Consultation
+          Get In Touch
         </motion.button>
 
         <button
@@ -125,7 +125,7 @@ export function Navbar() {
             onClick={() => handleNavClick('#contact')}
             className="w-full rounded-full bg-accent-primary px-6 py-2 text-sm font-medium text-[#0a0e27] transition hover:bg-accent-secondary"
           >
-            Schedule a Consultation
+            Get In Touch
           </motion.button>
         </motion.div>
       )}

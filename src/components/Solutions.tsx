@@ -2,56 +2,50 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiArrowRight, FiPhone, FiZap, FiCode, FiShield } from 'react-icons/fi';
+import { FiCode, FiServer, FiCpu, FiTool } from 'react-icons/fi';
 import { techIcons } from '@/lib/assets';
-import { scrollToSection } from '@/lib/utils';
 import type { IconType } from 'react-icons';
 
-interface Solution {
+interface SkillCategory {
   id: number;
   icon: IconType;
   title: string;
   description: string;
   techs: string[];
-  relatedCaseStudy: string;
 }
 
-const solutions: Solution[] = [
+const skillCategories: SkillCategory[] = [
   {
     id: 1,
-    icon: FiPhone,
-    title: 'Communication Automation',
+    icon: FiCode,
+    title: 'Frontend Development',
     description:
-      'Stop sending messages manually. We connect Twilio to your existing systems to automate SMS onboarding, payment reminders, and win-back campaigns that run 24/7.',
-    techs: ['twilio', 'dotnet', 'react', 'webhook'],
-    relatedCaseStudy: '#smsAutomation',
+      'Building responsive, modern, and interactive user interfaces with the latest web technologies and best practices in UI/UX design.',
+    techs: ['react', 'html', 'css', 'tailwind'],
   },
   {
     id: 2,
-    icon: FiZap,
-    title: 'Workflow & Integration Automation',
+    icon: FiServer,
+    title: 'Backend Development',
     description:
-      'Eliminate repetitive tasks with custom Zapier, n8n, and Systeme.io workflows. We connect your tools so data flows automatically between platforms.',
-    techs: ['zapier', 'n8n', 'systeme', 'webhook'],
-    relatedCaseStudy: '#workflowAutomation',
+      'Designing and implementing scalable RESTful APIs, authentication systems, and server-side applications with robust architecture.',
+    techs: ['nodejs', 'dotnet', 'python', 'restapi'],
   },
   {
     id: 3,
-    icon: FiCode,
-    title: 'Custom Software Development',
+    icon: FiCpu,
+    title: 'AI & Machine Learning',
     description:
-      'Full-stack web applications built with React, Node.js, and .NET. From membership platforms to institute management systems, we build software tailored to your business.',
-    techs: ['react', 'nodejs', 'dotnet', 'sql'],
-    relatedCaseStudy: '#instituteManagement',
+      'Developing intelligent systems using NLP, machine learning algorithms, and data analysis to solve complex problems.',
+    techs: ['python', 'cpp', 'sql', 'iot'],
   },
   {
     id: 4,
-    icon: FiShield,
-    title: 'AI & Security Systems',
+    icon: FiTool,
+    title: 'Tools & Technologies',
     description:
-      'Computer vision, face recognition, and IoT security solutions powered by Python and OpenCV. Protect your premises with intelligent, real-time monitoring.',
-    techs: ['python', 'opencv', 'iot', 'restapi'],
-    relatedCaseStudy: '#faceRecognition',
+      'Proficient in version control, containerization, database management, and modern development tools for efficient workflows.',
+    techs: ['git', 'docker', 'sql', 'restapi'],
   },
 ];
 
@@ -59,7 +53,7 @@ export function Solutions() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id="solutions" ref={ref} className="bg-dark-bg px-4 py-24">
+    <section id="skills" ref={ref} className="bg-dark-bg px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -68,42 +62,34 @@ export function Solutions() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-text-primary">
-            What We Build
+            Skills & Expertise
           </h2>
           <p className="text-text-secondary">
-            Four Things We&apos;re Very Good At
+            Technical proficiencies across the full development stack
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {solutions.map((solution, index) => (
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={solution.id}
+              key={category.id}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative cursor-pointer rounded-xl border border-dark-border bg-dark-card p-8 transition-colors hover:border-accent-primary/50"
-              onClick={() => {
-                // Update URL hash for highlighting
-                window.history.pushState(null, '', solution.relatedCaseStudy);
-                // Scroll to the case study
-                scrollToSection(solution.relatedCaseStudy);
-                // Trigger hashchange event for the highlight effect
-                window.dispatchEvent(new HashChangeEvent('hashchange'));
-              }}
+              className="group relative rounded-xl border border-dark-border bg-dark-card p-8 transition-colors hover:border-accent-primary/50"
               whileHover={{ scale: 1.02 }}
             >
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-primary to-accent-secondary opacity-0 transition group-hover:opacity-10" />
 
-              <solution.icon className="mb-4 text-3xl text-accent-primary sm:text-4xl" />
+              <category.icon className="mb-4 text-3xl text-accent-primary sm:text-4xl" />
 
               <h3 className="mb-3 text-lg font-bold text-text-primary sm:text-xl">
-                {solution.title}
+                {category.title}
               </h3>
-              <p className="mb-6 text-sm text-text-secondary sm:text-base">{solution.description}</p>
+              <p className="mb-6 text-sm text-text-secondary sm:text-base">{category.description}</p>
 
-              <div className="mb-6 flex flex-wrap gap-3">
-                {solution.techs.map((tech) => (
+              <div className="flex flex-wrap gap-3">
+                {category.techs.map((tech) => (
                   <div
                     key={tech}
                     className="flex items-center gap-2 rounded border border-dark-border bg-dark-bg px-3 py-1"
@@ -121,24 +107,6 @@ export function Solutions() {
                   </div>
                 ))}
               </div>
-
-              <span
-                className="inline-flex items-center gap-2 text-accent-primary transition hover:text-accent-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-card"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent card click double-fire
-                  // Update URL hash for highlighting
-                  window.history.pushState(null, '', solution.relatedCaseStudy);
-                  // Scroll to the case study
-                  scrollToSection(solution.relatedCaseStudy);
-                  // Trigger hashchange event for the highlight effect
-                  window.dispatchEvent(new HashChangeEvent('hashchange'));
-                }}
-                role="button"
-                tabIndex={0}
-                aria-label={`View examples for ${solution.title}`}
-              >
-                View Examples <FiArrowRight />
-              </span>
             </motion.div>
           ))}
         </div>

@@ -6,24 +6,24 @@ import { Navbar } from '@/components/Navbar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Premium Software Development | Automation & AI Solutions',
+  title: 'Muhammad Abubakar | Full-Stack Developer & CS Student',
   description:
-    'Expert in Twilio, Zapier, custom software development, and AI security systems.',
-  keywords: 'automation, software development, Twilio, Zapier, AI, security',
+    'BS Computer Science student at UET Lahore. Full-stack developer specializing in React, Node.js, AI/ML, and building scalable web applications.',
+  keywords: 'Full-Stack Developer, React, Node.js, AI, Machine Learning, Computer Science, UET Lahore, Web Development, Software Engineering',
+  authors: [{ name: 'Muhammad Abubakar' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yoursite.com',
-    title: 'Premium Software Development | Automation & AI Solutions',
+    url: 'https://muhammadabubakar.dev',
+    title: 'Muhammad Abubakar | Full-Stack Developer & CS Student',
     description:
-      'Expert in Twilio, Zapier, custom software development, and AI security systems.',
-    images: [
-      {
-        url: 'https://yoursite.com/og-image.png',
-        width: 1200,
-        height: 630,
-      },
-    ],
+      'BS Computer Science student at UET Lahore. Full-stack developer specializing in React, Node.js, AI/ML, and building scalable web applications.',
+    siteName: 'Muhammad Abubakar Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Muhammad Abubakar | Full-Stack Developer',
+    description: 'Full-stack developer specializing in React, Node.js, and AI/ML',
   },
 };
 

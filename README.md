@@ -1,49 +1,45 @@
-# Premium Software House Portfolio Website
+# Muhammad Abubakar - Personal Portfolio
 
-A stunning, enterprise-grade single-page portfolio website showcasing software development, automation, AI & security expertise. Built with Next.js 14 (App Router), React 18, TypeScript, Three.js, and Framer Motion.
+A modern, interactive personal portfolio website showcasing my projects, skills, and experience as a Full-Stack Developer and Computer Science student. Built with Next.js 14, React 18, TypeScript, Three.js, and Framer Motion.
 
 ## 🚀 Features
 
-- **Single Page Application**: All navigation via smooth scroll, no external pages
-- **3D Hero Scene**: Rotating geometric shapes with Three.js and React Three Fiber
-- **Advanced Animations**: Framer Motion for UI animations and GSAP for timelines
-- **CDN-Based Assets**: All icons/images loaded from external CDNs
+- **Single Page Application**: Smooth scroll navigation between sections
+- **3D Hero Scene**: Interactive geometric shapes with Three.js and React Three Fiber
+- **Advanced Animations**: Framer Motion for UI animations and scroll effects
 - **Responsive Design**: Fully responsive across mobile, tablet, and desktop
-- **Dark Theme**: Custom Tailwind CSS theme with enterprise-grade colors
-- **Interactive Components**: Hover effects, scroll animations, and interactive forms
+- **Dark Theme**: Custom Tailwind CSS theme with cyan accent colors
+- **Interactive Components**: Hover effects, scroll animations, and contact form
 
 ## 📁 Project Structure
 
 ```
-zentro-portfolio/
+portfolio/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx         # Global layout with Navbar
+│   │   ├── layout.tsx         # Global layout with metadata
 │   │   ├── page.tsx          # Main page with all sections
 │   │   └── globals.css       # Global styles & animations
 │   │
 │   ├── components/
-│   │   ├── Navbar.tsx        # Sticky navigation with smooth scroll
+│   │   ├── Navbar.tsx        # Navigation with smooth scroll
 │   │   ├── Hero.tsx         # Hero section with 3D scene
-│   │   ├── Intro.tsx        # Company introduction
-│   │   ├── Solutions.tsx    # 4 solution cards with tech badges
-│   │   ├── CaseStudies.tsx  # 5 project case studies
-│   │   ├── WhyChooseUs.tsx  # 6 benefit cards
-│   │   ├── About.tsx        # Company about section
-│   │   ├── Testimonials.tsx # Client testimonials carousel
-│   │   ├── Contact.tsx      # Contact form with validation
-│   │   ├── Footer.tsx        # Footer with navigation
+│   │   ├── Intro.tsx        # About me introduction
+│   │   ├── Solutions.tsx    # Skills & expertise cards
+│   │   ├── CaseStudies.tsx  # Featured projects
+│   │   ├── WhyChooseUs.tsx  # Professional strengths
+│   │   ├── About.tsx        # Experience & education
+│   │   ├── Contact.tsx      # Contact form
+│   │   ├── Footer.tsx       # Footer with social links
 │   │   └── 3D/
 │   │       └── HeroScene.tsx # Three.js 3D scene
 │   │
 │   └── lib/
-│       ├── assets.ts        # CDN URLs for tech icons & images
+│       ├── assets.ts        # CDN URLs for tech icons
 │       └── utils.ts         # Helper functions
 │
-├── public/                  # Static assets
 ├── .env.local              # Environment variables
 ├── tailwind.config.js      # Tailwind theme config
-├── next.config.js          # Next.js configuration
 └── package.json            # Dependencies
 ```
 
@@ -53,17 +49,15 @@ zentro-portfolio/
 - **React 18** with TypeScript (strict mode)
 - **Three.js** + **React Three Fiber** + **@react-three/drei** (3D graphics)
 - **Framer Motion** (UI animations)
-- **GSAP** (advanced animations)
 - **Tailwind CSS 3.x** (styling)
 - **React Icons** (UI icons)
 - **React Intersection Observer** (scroll animations)
 
 ## 🎨 Design Tokens
 
-The project uses a custom dark theme with the following color palette:
+Custom dark theme with the following color palette:
 
 ```javascript
-// Defined in tailwind.config.js
 dark: {
   bg: '#0a0e27',      // Main background
   card: '#141829',    // Card background
@@ -74,30 +68,25 @@ accent: {
   secondary: '#ff006e', // Pink/Magenta
   success: '#00d084',  // Green
 },
-text: {
-  primary: '#ffffff',   // White text
-  secondary: '#a0a0a0', // Gray text
-}
 ```
 
 ## 📱 Sections
 
-1. **Hero**: 3D scene with typewriter animation and CTAs
-2. **Intro**: Company description with fade-in animation
-3. **Solutions**: 4 solution cards with tech stack badges
-4. **Case Studies**: 5 project examples with outcomes
-5. **Why Choose Us**: 6 benefit cards
-6. **About**: Company info and philosophy
-7. **Testimonials**: Client feedback carousel
-8. **Contact**: Form with validation and direct contact options
-9. **Footer**: Navigation links and copyright
+1. **Hero**: 3D scene with animated headlines and CTAs
+2. **About**: Personal introduction and background
+3. **Skills**: Technical expertise categorized by domain
+4. **Projects**: Featured projects with descriptions and tech stack
+5. **Strengths**: Professional capabilities and core strengths
+6. **Experience**: Work experience and education
+7. **Contact**: Contact form and social links
+8. **Footer**: Navigation and social media links
 
 ## 🔧 Installation
 
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd zentro-portfolio
+   cd portfolio
    ```
 
 2. Install dependencies:
@@ -109,7 +98,6 @@ text: {
    ```bash
    cp .env.local.example .env.local
    ```
-   Edit `.env.local` with your company details.
 
 4. Run the development server:
    ```bash
@@ -124,22 +112,20 @@ text: {
 
 ## 🌐 CDN Assets
 
-All assets are loaded from external CDNs:
+All tech icons and images are loaded from external CDNs:
 
-- **Tech Icons**: Skillicons.dev, SimpleSVG, Placeholder.co
-- **Project Images**: Picsum.photos (random images)
-- **Avatars**: DiceBear API (generated based on names)
+- **Tech Icons**: Skillicons.dev, SimpleSVG
+- **Project Images**: Picsum.photos (placeholder images)
 - **UI Icons**: React Icons package
 
 ## 🎯 Key Features Implemented
 
 - ✅ Smooth scroll navigation between sections
 - ✅ Responsive navigation with mobile hamburger menu
-- ✅ Typewriter effect in hero section
-- ✅ 3D tilt effects on solution cards
+- ✅ Animated headlines with typewriter effect
+- ✅ 3D graphics in hero section
 - ✅ Staggered animations on scroll
-- ✅ Form validation with error handling
-- ✅ Testimonial carousel with auto-rotation
+- ✅ Contact form with mailto integration
 - ✅ Accessibility features (ARIA labels, semantic HTML)
 - ✅ SEO metadata and OpenGraph tags
 - ✅ Performance optimized with lazy loading
@@ -149,24 +135,34 @@ All assets are loaded from external CDNs:
 Create a `.env.local` file with:
 
 ```env
-NEXT_PUBLIC_COMPANY_NAME=Your Company Name
-NEXT_PUBLIC_COMPANY_EMAIL=hello@example.com
-NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-link
+NEXT_PUBLIC_NAME="Muhammad Abubakar"
+NEXT_PUBLIC_EMAIL="itsabubakar103@gmail.com"
+NEXT_PUBLIC_LINKEDIN_URL="https://www.linkedin.com/in/abubakarvibe/"
+NEXT_PUBLIC_GITHUB_URL="https://github.com/MuhammadMuhammadalif"
 ```
 
 ## 🚀 Deployment
 
-This project can be deployed to any platform that supports Next.js:
+This project can be deployed to:
 
-- **Vercel** (Recommended)
+- **Vercel** (Recommended for Next.js)
 - **Netlify**
 - **AWS Amplify**
-- **Digital Ocean App Platform**
+- **Cloudflare Pages**
+
+## 👨‍💻 About Me
+
+I'm Muhammad Abubakar, a BS Computer Science student at the University of Engineering and Technology (UET), Lahore. I'm passionate about building scalable software solutions and AI-powered applications.
+
+**Connect with me:**
+- 📧 Email: itsabubakar103@gmail.com
+- 💼 LinkedIn: [linkedin.com/in/abubakarvibe](https://www.linkedin.com/in/abubakarvibe/)
+- 🐙 GitHub: [github.com/MuhammadMuhammadalif](https://github.com/MuhammadMuhammadalif)
 
 ## 📄 License
 
-This project is for portfolio and demonstration purposes. Feel free to use as inspiration for your own projects.
+This project is for personal portfolio purposes. Feel free to use as inspiration for your own projects.
 
 ---
 
-**Built with ❤️ using Next.js, React, and Three.js**
+**Built with ❤️ using Next.js, React, Three.js, and Tailwind CSS**
